@@ -55,18 +55,5 @@ function playRound(playerSelection, computerSelection) {
 
 
 }
-/*
-function game(plays) {
-    for(let i = 0; i < plays; i++){
-        const playerSelection = prompt('Select rock paper or scissors');
-        // Validate Player result here
 
-
-        const computerSelection = computerPlay();
-        console.log(playRound(playerSelection, computerSelection));
-    }
-}
-
-game(5);
-*/
 
