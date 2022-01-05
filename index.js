@@ -1,6 +1,25 @@
 let playerScore = 0;
 let computerScore = 0;
 
+const buttons = document.querySelector(".buttons")
+
+const resultsDiv = document.querySelector(".results")
+
+buttons.addEventListener("click", (e) => {
+    if (playerScore === 5 || computerScore === 5) {
+        alert('Game Over')
+    } else {
+        const result = document.createElement('h3')
+        result.textContent = playRound(e.target.textContent, computerPlay());
+        resultsDiv.appendChild(result)
+        if (playerScore === 5) {
+            alert('You Win')
+        } else if (computerScore === 5) {
+            alert('You lose')
+        }
+    }
+})
+
 function computerPlay() {
     const randomNumber = Math.floor(Math.random() * 3) + 1;
     console.log(randomNumber)
@@ -24,25 +43,30 @@ function playRound(playerSelection, computerSelection) {
     else if (playerSelectionLowerCase === 'rock' && computerSelection === 'scissors'
         || playerSelectionLowerCase === 'paper' && computerSelection === 'rock'
         || playerSelectionLowerCase === 'scissors' && computerSelection === 'paper') {
-            playerScore++
+        playerScore++
         return `You Win ${playerSelection} beats ${computerSelection}! Player Score = ${playerScore}. Computer Score = ${computerScore}`;
     }
     else if ((playerSelectionLowerCase === 'rock' && computerSelection === 'paper'
         || playerSelectionLowerCase === 'paper' && computerSelection === 'scissors'
-        || playerSelectionLowerCase === 'scissors' && computerSelection === 'rock')){
-            computerScore++
-            return `You Lose ${computerSelection} beats ${playerSelection}! Player Score = ${playerScore}. Computer Score = ${computerScore}`;
-        }
+        || playerSelectionLowerCase === 'scissors' && computerSelection === 'rock')) {
+        computerScore++
+        return `You Lose ${computerSelection} beats ${playerSelection}! Player Score = ${playerScore}. Computer Score = ${computerScore}`;
+    }
 
 
 }
-
+/*
 function game(plays) {
     for(let i = 0; i < plays; i++){
         const playerSelection = prompt('Select rock paper or scissors');
+        // Validate Player result here
+
+
         const computerSelection = computerPlay();
         console.log(playRound(playerSelection, computerSelection));
     }
 }
 
 game(5);
+*/
+
